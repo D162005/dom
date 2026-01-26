@@ -99,3 +99,118 @@ body{
     position: relative;
     z-index: 10;
 }
+
+#box3{
+    height: 90vh;
+    width: 90vw;
+    background-color: rgb(151, 2, 2);    
+    margin: 5vh 5vw;  
+    padding: 15vh 10vw;
+}
+
+#loadingcard{
+    height: 50vh;
+    width: 50vw;
+    background-color: rgb(255, 255, 255);    
+    margin: auto;
+    padding: 5vh 5vw;
+    border-radius: 5vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    /* position: relative; */
+}
+
+#dn-text{
+    font-size: 4vh;
+    /* font-weight: bold; */
+    font:system-ui;
+    text-transform: capitalize;
+    text-align: center;
+    margin-bottom: 5vh; 
+    color: #000000;
+}
+span{
+    color: #00aeff;
+    font-weight: bold;
+    -webkit-text-stroke: 0.1vw;
+    -webkit-text-stroke-color: #070789;
+}
+
+#outerbox{
+    height: 8vh;
+    width: 100%;
+    border-radius: 10vh;
+    background-color: #4b4b4b;
+    display: flex;
+    align-items: center;
+    padding: 0.5vh 0.3vw ;
+    /* position: relative; */
+    /* justify-content: center; */
+}
+
+#innerbox{
+    height: 7vh;
+    width: 0%;
+    border-radius: 10vh;
+    background-color: #00ff00;
+    /* position: absolute; */
+
+}
+
+#circle{
+    height: 25vh;
+    width: 25vh;
+    border-radius: 50%;
+    background-color: #d7d7d700;
+    margin-top: 5vh;
+    padding: 2vh;
+    transform: translateX(-16vw) translateY(3vh);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#loadpercent{
+    font-size: 8vh;
+    font-weight: bold;
+    font:system-ui;
+    text-transform: capitalize;
+    text-align: center;
+    /* margin-top: 3vh;  */
+    /* transform: translateX(-17vw) translateY(5vh); */
+    color: #000000;
+}
+
+#button3{
+    height: 10vh;
+    width: 25vw;
+    background-color: rgba(0, 205, 38, 0.767);    
+    transform: translateX(10vw) translateY(32vh);
+    border-radius: 50vw;
+    border-width: 0.5vh; 
+    border-color: #2e2e2e;
+    font-size: 5vh;
+    font-weight: bold;
+    font:system-ui;
+    text-transform: capitalize;
+    cursor: pointer;
+    position: absolute;
+
+}
+
+#butt4{
+    height: 10vh;
+    width: 10vw;
+    background-color: rgba(255, 255, 255, 0.767);    
+    transform: translateX(30vw) translateY(2vh);
+    border-radius: 50vw;
+    border-width: 0.5vh; 
+    border-color: #2e2e2e;
+    font-size: 45px;
+    /* text-transform: capitalize; */
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

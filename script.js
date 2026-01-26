@@ -52,3 +52,54 @@ butt2.addEventListener('click', function(){
     }
 });
 
+let butt3 = document.getElementById("button3");
+
+
+butt3.addEventListener('click', function(){
+    let innerbox = document.getElementById("innerbox");
+    let randamnum = 50 + Math.floor(Math.floor(Math.random()*50));
+    let num = 0;
+
+
+    let int = setInterval(() => {
+        num++;
+        innerbox.style.width = `${num}%`;
+        document.getElementById("loadpercent").innerHTML=`${num}%`;
+        document.querySelector("#circle").style.backgroundColor ="#d7d7d7";
+    }, randamnum);
+
+    setTimeout(() => {
+      clearInterval(int);
+      let remaintime = document.createElement("h3");
+      remaintime.style.fontSize = "3vh";
+      remaintime.id = "remaintime";
+      remaintime.style.transform = "translateX(0vw) translateY(-17vh)";
+      remaintime.innerHTML = `Approx ${(randamnum*100)/1000} Seconds taken to Download`;
+      document.querySelector("#loadingcard").appendChild(remaintime);
+      butt3.innerHTML = "Downloaded";
+    },randamnum*100);
+
+    butt3.innerHTML = "Downloading...";
+    butt3.style.opacity = "0.3";
+    butt3.disabled = true;
+    butt3.style.cursor = "not-allowed";
+
+});
+
+let realoadbutt = document.createElement("button");
+realoadbutt.innerHTML = `<span class="material-symbols-outlined">rotate_left</span>`;
+realoadbutt.id = "butt4";
+document.querySelector("#box3").appendChild(realoadbutt);
+
+realoadbutt.addEventListener('click', function(){
+  // document.location.reload();
+  butt3.disabled = false;
+  butt3.style.opacity = "1";
+  butt3.style.cursor = "pointer";
+  innerbox.style.width = `0%`;
+  document.getElementById("circle").style.backgroundColor =null;
+  document.getElementById("loadpercent").innerHTML=``;
+  remaintime.remove(); // document.querySelector("#remaintime").remove();
+  butt3.innerHTML = "Download";
+
+});
