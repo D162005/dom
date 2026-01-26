@@ -1,0 +1,101 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html , body{
+    height: 100vh;
+    width: 100vw;
+}
+
+body{
+    background-color: #000;
+}
+
+#box1{
+    height: 90vh;
+    width: 90vw;
+    background-color: red; 
+    margin: 5vh 5vw;   
+    align-items: center;
+    justify-self:center;
+    padding: 15vh 10vw;
+}
+
+#winbox{
+    height: 40vh;
+    width: 40vw;
+    background-color: green;    
+    border-radius: 5vh;
+    border: solid 0.5vh;
+    border-color:#3a0404 ;
+    align-items: center;
+    justify-self:center;
+}
+
+#team-name{
+    font-size: 10vh;
+    font-weight: bold;
+    font:system-ui;
+    text-transform: uppercase;
+    text-align: center;
+    margin-top: 5vh;
+    color: #ffffff;
+    -webkit-text-stroke-width: 0.15vw;
+    -webkit-text-stroke-color: #4b4b4b;
+}
+
+#team-moto{
+    font-size: 6vh;
+    font-weight: bold;
+    font:system-ui;
+    text-transform: capitalize;
+    text-align: center;
+    margin-top: 4vh;
+    color: #ffffff;
+    letter-spacing: 0.6vh;
+    -webkit-text-stroke-width: 0.15vw;
+    -webkit-text-stroke-color: #4b4b4b;
+}
+
+#button1{
+    height: 10vh;
+    width: 20vw;
+    background-color: rgb(165, 165, 165);    
+    margin-top: 5vh;
+    transform: translatex(24vw);
+    border-radius: 50vw;
+    border-width: 0.5vh; 
+    border-color: #930000;
+    font-size: 5vh;
+    font-weight: bold;
+    font:system-ui;
+    text-transform: capitalize;
+    cursor: pointer;
+}
+#box2{
+    height: 90vh;
+    width: 90vw;
+    background-color: rgb(2, 2, 151);    
+    margin: 5vh 5vw;
+    position: relative;
+    padding: 15vh 10vw;
+    overflow: hidden;
+}
+
+#button2{
+    height: 10vh;
+    width: 20vw;
+    background-color: rgb(194, 194, 194);    
+    transform: translateX(25vw) translateY(25vh);  
+    border-radius: 50vw;
+    border-width: 0.5vh; 
+    border-color: #02025b;
+    font-size: 5vh;
+    font-weight: bold;
+    font:system-ui;
+    text-transform: capitalize;
+    cursor: pointer;
+    position: relative;
+    z-index: 10;
+}
