@@ -103,3 +103,22 @@ realoadbutt.addEventListener('click', function(){
   butt3.innerHTML = "Download";
 
 });
+
+
+let postimg = document.querySelector("#postcard img");
+postimg.addEventListener('click', function(){
+  document.querySelector("#heart-icon").style.opacity = "1";
+  document.querySelector("#heart-icon").style.transform = " scale(1.5) translateY(0vh) rotate(-50deg)  ";
+  console.log(document.querySelector("#heart-icon").style.transform);
+
+  setTimeout(() => {
+    document.querySelector("#heart-icon").style.opacity = "1";
+    document.querySelector("#heart-icon").style.transform = " scale(1.7) translateY(-25vh) rotate(0deg)  ";
+  }, 200);
+
+  setTimeout(() => {
+    document.querySelector("#heart-icon").style.opacity = "0";
+    document.querySelector("#heart-icon").style.transform = " scale(1) translateY(0vh) rotate(0deg)  ";
+  }, 500);
+
+});

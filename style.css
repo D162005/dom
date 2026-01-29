@@ -130,7 +130,7 @@ body{
     margin-bottom: 5vh; 
     color: #000000;
 }
-span{
+#bluewd{
     color: #00aeff;
     font-weight: bold;
     -webkit-text-stroke: 0.1vw;
@@ -213,4 +213,56 @@ span{
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+#box4{
+    height: 90vh;
+    width: 90vw;
+    background-color: rgb(2, 151, 2);    
+    margin: 5vh 5vw;  
+    padding: 15vh 10vw;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#postcard{
+    height: 60vh;
+    width: 25vw;
+    background-color: rgb(225, 223, 223);    
+    
+    border-radius: 5vh;
+    position: relative;
+    overflow: hidden;
+    padding: 3vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 4vh;
+}
+
+#postcard img{
+    height: 70%;
+    width: 100%;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 5vh;
+}
+
+#heart-icon{
+    font-size: 10vh;
+    /* color: #00aeff; */
+    position: absolute;
+    background-image: url("https://imgs.search.brave.com/oX9ytDX55IVEWjxkNMGtPiZLBDMRsqJdaF1u-XPspp8/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMTI0/OTcwMjkxNy92ZWN0/b3Ivc21vb3RoLWJs/dXJyZWQtZ3JhZGll/bnQtaW5zdGEtYmFj/a2dyb3VuZC13YWxs/cGFwZXItc3R5bGUt/c2NhbGFibGUtdmVj/dG9yLW1lc2gtYnJp/Z2h0LmpwZz9zPTYx/Mng2MTImdz0wJms9/MjAmYz0ydHo5cDFG/azF4RXM1MXBTUlVx/dFpUQ1Qzb3RxaXRa/MXhCT1RZUndQTzlR/PQ"); 
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    background-size: cover;
+    transition: transform 0.7s ease;
+    opacity: 0;
+    
+    
+    
 }
