@@ -84,3 +84,10 @@ let headlines = [
   "Don't just dream. Do.",
   "Make progress your habit."
 ] ;
+
+let cursors = [
+  {cursorname: "hammer", cursorurl: "./img/image-removebg-preview.png", id:"hammer-cursor"},
+  {cursorname: "fire", cursorurl: "./img/golden-new-year-illustration_23-2151911183-removebg-preview.png", id:"fire-cursor"},
+  {cursorname: "sawchi", cursorurl: "./img/cursor_design-removebg-preview.png", id:"sawchi-cursor"},
+  {cursorname: "sword", cursorurl: "./img/win-jon-snows-sword-longclaw-game-of-thrones-longclaw-metal-sword-of-jon-snow-115630700895cwqs2jquf-removebg-preview.png", id:"sword-cursor"},
+];

@@ -122,3 +122,208 @@ postimg.addEventListener('click', function(){
   }, 500);
 
 });
+
+let cursorbox = document.getElementById("cursor-box");
+let butt5 = document.getElementById("butt5");
+let selectedIndex = null; // index of currently selected cursor (null means none yet)
+
+
+function populateCursorButtonsSimple() {
+  if (!cursorbox || !Array.isArray(cursors)) return;
+
+  if (cursorbox.children.length === 0) {
+    cursors.forEach(c => {
+      let butt6 = document.createElement('button');
+      butt6.className = 'cursor-button';
+      butt6.type = 'button';
+
+      let cursimg = document.createElement('img');
+      cursimg.className = 'cursor-option-img';
+      cursimg.src = c.cursorurl || '';
+      cursimg.alt = c.cursorname || '';
+      // add id and dataset so we can style specific cursors (e.g., hammer) and identify them easily
+      cursimg.dataset.cursorId = c.cursorname || '';
+      cursimg.id = `cursor-img-${c.cursorname || ''}`;
+      cursimg.title = c.cursorname || '';
+
+      butt6.appendChild(cursimg);
+      cursorbox.appendChild(butt6);
+    });
+  }
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', populateCursorButtonsSimple);
+} else {
+  populateCursorButtonsSimple();
+}
+
+butt5.addEventListener('click', function(e){
+  cursorbox.style.opacity = "1";;
+
+  setTimeout(() => {
+    cursorbox.style.opacity = "0";
+  }, 3000);
+});
+
+let cursorbuttons = document.querySelectorAll(".cursor-button");
+console.log(cursorbuttons); 
+
+if (cursorbox) {
+  function setSelectedIndex(idx) {
+    const buttons = Array.from(cursorbox.querySelectorAll('.cursor-button'));
+    if (!buttons.length) return;
+    if (idx < 0 || idx >= buttons.length) idx = 0;
+
+    buttons.forEach(b => b.classList.remove('selected'));
+    buttons[idx].classList.add('selected');
+    selectedIndex = idx;
+
+    const sel = cursors[idx];
+    if (sel && sel.cursorurl) {
+      showActiveCursor(sel.cursorurl, sel.cursorname);
+    }
+  }
+
+  cursorbox.addEventListener('click', function(e){
+    const btn = e.target.closest('.cursor-button');
+    if (!btn) return; 
+
+    const buttons = Array.from(cursorbox.querySelectorAll('.cursor-button'));
+    const idx = buttons.indexOf(btn);
+    if (idx === -1) return;
+
+    console.log('Selected cursor:', cursors[idx]);
+    setSelectedIndex(idx);
+  });
+} else {
+  console.warn('cursorbox element not found; cursor buttons cannot be selected');
+}
+
+const box5 = document.getElementById('box5');
+
+const activeCursor = document.createElement('img');
+activeCursor.id = 'active-cursor';
+activeCursor.className = 'cursor';
+activeCursor.alt = 'active cursor';
+box5.appendChild(activeCursor);
+
+function showActiveCursor(url, id) {
+  activeCursor.src = url;
+  activeCursor.dataset.cursorId = id || '';
+  activeCursor.style.display = 'block';
+  box5.style.cursor = 'none';
+}
+
+function hideActiveCursor() {
+  activeCursor.style.display = 'none';
+}
+
+box5.addEventListener('mouseenter', function(e) {
+  box5.style.cursor = 'none';
+  activeCursor.style.position = 'absolute';
+
+  if (selectedIndex === null) {
+    
+    const buttons = Array.from(cursorbox.querySelectorAll('.cursor-button'));
+    if (buttons.length) {
+      buttons.forEach(b => b.classList.remove('selected'));
+      buttons[0].classList.add('selected');
+      selectedIndex = 0;
+      if (cursors[0] && cursors[0].cursorurl) showActiveCursor(cursors[0].cursorurl, cursors[0].cursorname);
+    }
+  } else if (activeCursor.src) {
+    activeCursor.style.display = 'block';
+  }
+});
+
+box5.addEventListener('mousemove', function(e){
+  if (activeCursor.style.display === 'none') return;
+  const rect = box5.getBoundingClientRect();
+  const x = e.clientX - rect.left; 
+  const y = e.clientY - rect.top;
+  activeCursor.style.left = `${x}px`;
+  activeCursor.style.top = `${y}px`;
+});
+
+box5.addEventListener('mouseleave', hideActiveCursor);
+
+
+let gmbody = document.querySelector(".gmbody");
+let bubbles = document.querySelector(".bubbles");
+let bubb = "";
+let hitval = "";
+let scoreval = 0;
+let gmplay = document.querySelector("#gmplay");
+
+
+function randbubb(){
+  bubb = "";
+  for(i=0 ; i<50 ; i++){
+    let bubbval = Math.floor(Math.random()*10);
+    bubb += `<div class="bubbles" id=bubb${i}>${bubbval}</div>`;
+  };
+  gmbody.innerHTML = bubb;
+};
+
+
+function randhitval(){
+  hitval = Math.floor(Math.random()*10);
+  document.querySelector("#hit-val").innerHTML = hitval;
+};
+
+function timeavail(){
+  scoreval = 0;
+  document.querySelector('#score-val').innerHTML = scoreval;
+
+  let t = 60
+  let tremain = setInterval(() => {
+        t--;
+        console.log(t);
+        document.querySelector('#time-val').innerHTML = t;
+      }, 1000);
+  
+  setTimeout(() => {
+    clearInterval(tremain);
+    gmbody.innerHTML = 'Game - Over';
+    gmplay.innerHTML = `<i class="ri-reset-left-fill"></i>`;
+    gmplay.style.opacity = "1";
+
+  }, 60000);
+};
+
+gmbody.addEventListener("click", function(dets){
+  console.log(hitval);
+  console.log(dets.target.id);
+  if(dets.target.textContent == hitval){
+    dets.target.style.backgroundColor = 'green';
+    
+    setTimeout(() => {
+      randbubb();
+      randhitval();
+      scoreval += 10;
+      document.querySelector('#score-val').innerHTML = scoreval;
+    }, 200);
+  }
+  else
+    dets.target.style.backgroundColor = 'red';
+    setTimeout(() => {
+      dets.target.style.backgroundColor = '';
+    }, 200);
+});
+
+
+
+
+
+gmplay.addEventListener("click",function(){
+  gmplay.style.opacity = "0";
+
+  randbubb();
+  randhitval();
+  timeavail();
+
+});
+
+
+
