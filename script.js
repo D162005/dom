@@ -312,10 +312,6 @@ gmbody.addEventListener("click", function(dets){
     }, 200);
 });
 
-
-
-
-
 gmplay.addEventListener("click",function(){
   gmplay.style.opacity = "0";
 
@@ -324,6 +320,66 @@ gmplay.addEventListener("click",function(){
   timeavail();
 
 });
+let reelsec = document.querySelector('.main-box');
+function reelsplay(){
+  let reel = '';
 
+  reels.forEach(function(dets,idx){
 
+    reel = reel + `<div class="reel-box">
+                  <video class="reel-video" src="${dets.videosrc}" autoplay loop muted></video>
+                  <div class="lower-box">
+                      <div class="user-info">
+                          <img src="${dets.userimg}" alt="">
+                          <div><h3>${dets.username}</h3></div>
+                          <button id="${idx}" class="followico">${dets.isfollow?'Un-follow':'follow'}</button>
+                      </div>
+                      <h5>${dets.caption}</h5>
+                  </div>
+                  <div class="icon-box">
+                      <div class="likeico iconset" id="${idx}">
+                          <i class="${dets.islike ? 'ri-heart-3-fill' :"ri-heart-3-line"}"></i>
+                          <h6 class="nofheart">${dets.noflikes}</h6>
+                      </div>
+                      <div class="iconset">
+                          <i class="ri-chat-3-line"></i>
+                          <h6>${dets.nofcomments}</h6>
+                      </div>
+
+                      <div class="iconset">
+                          <i class="ri-share-fill"></i>
+                          <h6>share</h6>
+                      </div>
+                      <div class="iconset">
+                          <i class="ri-more-2-fill"></i>
+                      </div>
+                  </div>
+              </div>`
+  });
+
+  reelsec.innerHTML = reel;
+};
+
+reelsplay();
+
+reelsec.addEventListener('click',function(det){
+  console.log(det.target.className);  
+  if(det.target.className == 'likeico iconset'){
+    if(!reels[det.target.id].islike){
+      reels[det.target.id].noflikes++
+      reels[det.target.id].islike = true;
+      reelsplay();
+    }
+    else{
+      reels[det.target.id].noflikes--;
+      reels[det.target.id].islike = false;
+      reelsplay();
+    }  
+  }
+
+  if(det.target.classList.contains("followico")){
+    reels[det.target.id].isfollow ? reels[det.target.id].isfollow = false : reels[det.target.id].isfollow = true ;
+    reelsplay();
+  }
+});
 

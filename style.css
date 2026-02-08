@@ -502,4 +502,145 @@ body{
 }
 
 
+#box7{
+    height: 90vh;
+    width: 90vw;  
+    background: linear-gradient(black,rgb(34, 34, 34),rgb(50, 50, 50));
+    margin: 5vh 5vw;  
+    padding: 1.5vh 1vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.185);
+
+}
+
+.main-box{
+    height: 100%;
+    width: 25vw;
+    background-color: #000000;
+    margin: 2vh 2vw;
+    border-radius: 1vh;
+    position: relative;
+    overflow: auto;
+    scroll-snap-type:y mandatory;
+    scroll-behavior: smooth;
+}
+
+.reel-box{
+    height: 100%;
+    width: 100%;
+    border-radius: 1vh;
+    position: relative;
+    overflow: auto;
+    scroll-snap-align: start;
+
+}
+
+.main-box::-webkit-scrollbar{
+    display: none;
+}
+
+.reel-video{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    
+}
+
+.main-box .lower-box{
+    height: 10vh;
+    width: 100%;
+    background:linear-gradient(rgba(0, 0, 0, 0.049),rgba(0, 0, 0, 0.285),rgba(0, 0, 0, 0.68));
+    position: absolute;
+    bottom: 0;
+    padding: 1vh 1vw;
+    overflow: auto;
+    
+    
+}
+
+.lower-box::-webkit-scrollbar{
+    display: none;
+}
+
+.user-info{
+    display: flex;
+    gap: 0.6vw;
+    align-items: center;
+    justify-content: left;
+    /* flex-direction: column; */
+    overflow:auto;
+    margin-bottom: 0.8vh;
+    color: #ffffff;
+    
+}
+
+.user-info img{
+    height: 5vh;
+    width: 5vh;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: top ;
+    border: 0.1vw solid rgba(204, 204, 204, 0.626) ;
+
+}
+
+.user-info button{
+    height: 3vh;
+    padding: 0vh 1vw;
+    font-size: 0.9vw;
+    font-weight: 550;
+    border-radius: 2vw;
+    align-items: center;
+    justify-self: center;
+    color: whitesmoke;
+    background-color: transparent;
+    border-color: rgb(225, 217, 217);
+}
+
+.lower-box h5{
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
+    color: #6b6b6b;
+}
+
+.icon-box{
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    flex-direction: column;
+    gap: 3.5vh;
+    position: absolute;
+    right: 0;
+    bottom: 10vh;
+}
+
+.iconset{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 1.3vh;
+    color: white;
+    
+}
+
+/* .heart-icon{
+    border: solid 0.5vw white;
+} */
+
+.iconset h6{
+    font-weight: 100;
+    font-family:'Times New Roman', Times, serif;
+    pointer-events: none;
+}
+
+.iconset i{
+    pointer-events: none;
+}
+
+
 
