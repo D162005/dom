@@ -383,3 +383,36 @@ reelsec.addEventListener('click',function(det){
   }
 });
 
+
+let spotcir = document.querySelector('#spoting-box');
+spotcir.addEventListener('mousemove',function(det){
+  spotcir.style.background = `radial-gradient(5rem at ${det.x-50}px ${det.y-50}px, rgba(255, 255, 255, 0.049), rgba(0, 0, 0, 0.9)`;
+})
+
+let charactor = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+let paratext = document.querySelector('#main-section p');
+let text = paratext.innerHTML;
+
+paratext.addEventListener('mouseenter',function(){
+  let iteration = 0;
+  let matrixef = setInterval(() => {      
+      if(iteration>text.length){
+        clearInterval(matrixef);
+        console.log("i am right");
+      }
+      const randstr = text.split('').map((char,idx)=>{
+      if(iteration>idx){
+        return char;
+      }
+
+      
+
+      return charactor.split('')[Math.floor(Math.random()*charactor.length)]
+    }).join("")
+    paratext.innerText = randstr;
+    iteration += 0.25;
+    console.log(`iteration = ${iteration}`)
+  }, 50);
+
+
+});

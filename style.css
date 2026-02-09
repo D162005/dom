@@ -642,5 +642,61 @@ body{
     pointer-events: none;
 }
 
+#box8{
+    height: 90vh;
+    width: 90vw;  
+    background-color: #000;
+    margin: 5vh 5vw;  
+    padding: 1.5vh 1vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.185);  
+}
+
+#main-section{
+    height: 99%;
+    width: 99%;
+    background-color: #0a7a7c;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: auto;
+    position: relative;
+}
+
+#main-section img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    position: absolute;
+    z-index: 1;
+}
+
+#main-section p{
+    font-size: 3rem;
+    pointer-events: auto;
+    z-index: 3;
+    font-family: monospace;
+    color: #229204;
+}
+
+:root{
+    --x : 50%;
+    --y : 50%;
+}
+
+#spoting-box{
+    height: 100%;
+    width: 100%;
+    background : radial-gradient(3rem at var(--x) var(--y), rgba(255, 255, 255, 0.049), rgba(0, 0, 0, 0.82));
+    position: absolute;
+    pointer-events: auto;
+    z-index: 2;
+}
+
+
+
+
 
 
