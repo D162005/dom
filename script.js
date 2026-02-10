@@ -383,10 +383,11 @@ reelsec.addEventListener('click',function(det){
   }
 });
 
-
+let mainsecti = document.querySelector('#main-section');
 let spotcir = document.querySelector('#spoting-box');
-spotcir.addEventListener('mousemove',function(det){
+mainsecti.addEventListener('mousemove',function(det){
   spotcir.style.background = `radial-gradient(5rem at ${det.x-50}px ${det.y-50}px, rgba(255, 255, 255, 0.049), rgba(0, 0, 0, 0.9)`;
+  console.log(det);
 })
 
 let charactor = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
@@ -412,7 +413,7 @@ paratext.addEventListener('mouseenter',function(){
     paratext.innerText = randstr;
     iteration += 0.25;
     console.log(`iteration = ${iteration}`)
-  }, 50);
+  }, 40);
 
 
 });

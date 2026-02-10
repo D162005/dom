@@ -670,15 +670,17 @@ body{
     width: 100%;
     object-fit: cover;
     position: absolute;
-    z-index: 1;
+    /* z-index: 1; */
 }
 
 #main-section p{
     font-size: 3rem;
     pointer-events: auto;
-    z-index: 3;
+    z-index: 2;
     font-family: monospace;
-    color: #229204;
+    color: #37ff00;
+    font-weight: 900;
+    text-shadow: 0px 0px 5px #000000,0px 0px 15px rgb(0, 92, 0);
 }
 
 :root{
@@ -692,9 +694,72 @@ body{
     background : radial-gradient(3rem at var(--x) var(--y), rgba(255, 255, 255, 0.049), rgba(0, 0, 0, 0.82));
     position: absolute;
     pointer-events: auto;
-    z-index: 2;
+    z-index: 3;
+    pointer-events: none;
 }
 
+#box9{
+    height: 90vh;
+    width: 90vw;  
+    background-color: #000;
+    margin: 5vh 5vw;  
+    padding: 1.5vh 1vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.185);  
+}
+
+@property --rotate{
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+
+@keyframes movecdbor {
+    from{
+        --rotate:0deg;
+    }    
+    to{
+        --rotate:360deg;
+    }
+}
+
+#mov-card{
+    width: 20vw;
+    color: whitesmoke;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 0.5rem;
+    border: 0 solid rgba(0, 255, 255, 0) ;
+    background : 
+                 linear-gradient(black)padding-box,
+                 conic-gradient(from var(--rotate)  ,black,black,#43ACDB,#F9FEFA,#99FFFF,#3194BD, black)border-box;
+    padding: 1rem;
+    animation: movecdbor 5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-play-state: paused;
+    transition: all 0.3s linear;
+    box-shadow: 0 0 0rem #99FFFF;
+    border-radius: 1rem;
+}
+
+#mov-card:hover{
+    animation-play-state: running;
+    border-width: 0.4rem;
+    box-shadow: 0 0 3rem #99FFFF;
+    color: #71e9e9;
+    text-shadow: 0 0 5px #000000,0 0 10px #a9fbfc;
+    transform: scale(1.1);
+}
+
+#mov-card img{
+    width: 100%;
+    object-fit: cover;
+}
 
 
 
