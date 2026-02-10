@@ -793,7 +793,8 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-    
+    font-weight: 600;
+    cursor: pointer;
 }
 
 .some:hover{
@@ -811,4 +812,73 @@ body{
     pointer-events: none;
     transition: all 0.5s linear;
     mix-blend-mode:exclusion;
+}
+
+#box11{
+    height: 90vh;
+    width: 90vw;  
+    background-color: #000;
+    margin: 5vh 5vw;  
+    padding: 1.5vh 1vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.185);  
+}
+
+.box11sec{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    color: whitesmoke;
+    align-items: center;
+    justify-content: center;
+    anchor-name: --box-anchor;
+    /* gap: 1vw; */
+    transition: all 0.3s linear;
+}
+
+.div-box{
+    height: 20vh;
+    width: 10vw;
+    display: flex;
+    transition: all 0.3s ease;
+}
+
+.box11sec > div:nth-child(1){
+    background-color: red;
+}
+.box11sec > div:nth-child(2){
+    background-color: yellow;
+}
+.box11sec > div:nth-child(3){
+    background-color: blue;
+}
+
+
+.box11sec:has(.div-box:hover) {
+    .div-box{
+        transform: scale(0.5);
+        opacity: 0.5;
+         
+    }
+}
+
+.div-box:hover{
+    anchor-name: --box-anchor;
+    transform:scale(1.5) !important;
+    opacity: 1 !important;
+}
+
+.anchor2{
+    background-color: #005379;
+    position: absolute;
+    position-anchor: --box-anchor;
+    left: anchor(left);
+    bottom: anchor(bottom);
+    right: anchor(right);
+    top: anchor(top);
+    mix-blend-mode: difference;
+    pointer-events: none;
+    transition: all 0.5s linear;
 }
