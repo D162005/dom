@@ -414,6 +414,5 @@ paratext.addEventListener('mouseenter',function(){
     iteration += 0.25;
     console.log(`iteration = ${iteration}`)
   }, 40);
-
-
 });
+
