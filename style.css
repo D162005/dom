@@ -907,4 +907,29 @@ body{
     border: solid 0.5vh #000000;
     
     transition: background-color 0.2s ease;
-};
+}
+
+#box13{
+    height: 90vh;
+    width: 90vw;  
+    background-color: #121111;
+    margin: 5vh 5vw;  
+    padding: 1.5vh 1vw;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(182, 169, 169, 0.185); 
+}
+
+#moving-box{
+    height: 40vh;
+    width: 15vw;
+    background-color: #1c6396;
+    border: solid 0.3vh #00c3ff;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    transition: all 0.1s ease;
+}

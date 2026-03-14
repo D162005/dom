@@ -436,3 +436,16 @@ colorbox.addEventListener('mouseleave',function(){
   colorbox.style.backgroundColor = `#ffffff`;
   colorbox.style.borderColor = `#000000`;
 });
+
+
+let movingbox = document.querySelector('#moving-box');
+let box13 = document.querySelector('#box13');
+box13.addEventListener('mousemove',function(det){
+  let xVal = gsap.utils.mapRange(0, box13.getBoundingClientRect().width, movingbox.getBoundingClientRect().width,box13.getBoundingClientRect().width - movingbox.getBoundingClientRect().height, det.clientX);
+  gsap.to('#moving-box',{
+    left:xVal,
+    ease: 'power4',
+  })
+  console.log(xVal);
+});
+
