@@ -416,3 +416,23 @@ paratext.addEventListener('mouseenter',function(){
   }, 40);
 });
 
+
+let colorbox = document.querySelector('#colorbox');
+colorbox.addEventListener('mousemove',function(det){
+  let colorboxLocation = colorbox.getBoundingClientRect();
+  let insideColorBoxVal = det.clientX - colorboxLocation.left;
+  // let colorboxBorderVal = colorboxLocation.left;
+  let redcolor = gsap.utils.mapRange(0, colorboxLocation.width, 255, 0, insideColorBoxVal);
+  // colorbox.style.backgroundColor = `rgb(${redcolor}, 0, 0)`;
+  
+
+  let bluecolor = gsap.utils.mapRange(0,colorboxLocation.width,0, 255, insideColorBoxVal);
+  colorbox.style.backgroundColor = `rgb(${redcolor},0, ${bluecolor})`;
+  colorbox.style.borderColor = `rgb(${bluecolor},0, ${redcolor})`;
+  // gsap.to(colorbox,{backgroundColor: `rgb(${redcolor},0, ${bluecolor})`,ease: 'power4',});
+});
+
+colorbox.addEventListener('mouseleave',function(){
+  colorbox.style.backgroundColor = `#ffffff`;
+  colorbox.style.borderColor = `#000000`;
+});
