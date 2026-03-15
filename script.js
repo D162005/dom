@@ -1,3 +1,4 @@
+
 console.log(iplTeams[0].jersey_primary_color);
 var firstbox = document.querySelector("#winbox");
 var secondbox = document.querySelector("#box1");
@@ -448,4 +449,59 @@ box13.addEventListener('mousemove',function(det){
   })
   console.log(xVal);
 });
+
+
+
+let headingBox = document.querySelector('#heading-box');
+
+function throttle(func, limit) {
+  let inThrottle;
+  return function (...args) {
+    if (!inThrottle) {
+      func.apply(this, args);
+      inThrottle = true;
+      setTimeout(() => (inThrottle = false), limit);
+    }
+  };
+}
+
+let imgnum = 0;
+let natureLine = document.querySelector('#nature-line');
+let box14 = document.querySelector('#box14');
+headingBox.addEventListener('mousemove', throttle((det)=>{
+  let imgDiv = document.createElement('div');
+  imgDiv.className = 'heading-divimg';
+  imgDiv.style.left = det.clientX - box14.getBoundingClientRect().left +'px';
+  imgDiv.style.top = det.clientY - box14.getBoundingClientRect().top + 'px';
+  console.log(det.clientX, det.clientY);  
+  box14.appendChild(imgDiv);
+
+  let divImg = document.createElement('img');
+  divImg.className = 'div-imgs';
+  divImg.src = divimgs[imgnum];
+  imgnum++;
+  if(imgnum >= divimgs.length){imgnum = 0;}
+
+  gsap.to(divImg,{
+    y: 0,
+    duration: 0.6,
+    ease: 'power1'
+  });
+
+  gsap.to(divImg,{
+    y: '100%',
+    delay: 0.7,
+    duration: 0.3,
+    ease: 'power2'
+  });
+
+  imgDiv.appendChild(divImg);
+  
+
+
+  setTimeout(() => {
+    imgDiv.remove();
+  }, 2000);
+  
+}, 300));
 
