@@ -505,3 +505,115 @@ headingBox.addEventListener('mousemove', throttle((det)=>{
   
 }, 300));
 
+
+
+let board = document.querySelector('#board')
+let blockwidth = 30;
+let blockheight = 30;
+let blocks = [];
+let sneckinterval = null;
+let gmstrbutt = document.querySelector('#gm-str-butt');
+let sfood = {x:Math.floor(Math.random()*(board.getBoundingClientRect().height/blockheight)),y:Math.floor(Math.random()*(board.getBoundingClientRect().width/blockwidth))};
+let midblock = {x:Math.floor(Math.floor(board.getBoundingClientRect().height/blockheight)/2)-1,y:Math.floor(Math.floor(board.getBoundingClientRect().width/blockwidth)/2)};
+
+for(x=0 ; x<Math.floor(board.getBoundingClientRect().height/blockheight) ; x++){
+  for(y=0 ; y<Math.floor(board.getBoundingClientRect().width/blockwidth) ; y++){
+    let block = document.createElement('div');
+    block.className = 'block';
+    block.innerText = `${x}-${y}`;
+    board.appendChild(block);
+    blocks[`${x}-${y}`] = block;
+  };
+};
+
+
+function strsneckgame(){
+  let sneck = [{x:midblock.x,y:midblock.y}];
+  let direction = 'down';
+  let sneckScoreVal = 0;
+
+  addEventListener('keydown', function(det){
+    if(det.key == 's' && direction != 'up'){
+      direction = 'down';
+    }
+    else if(det.key == 'w' && direction != 'down'){
+      direction = 'up';
+    }
+    else if(det.key == 'a' && direction != 'right'){
+      direction = 'left';
+    }
+    else if(det.key == 'd' && direction != 'left'){
+      direction = 'right';
+    }
+  });
+
+  
+  function snecks(){
+    sneck.forEach(sblock=>{
+      blocks[`${sblock.x}-${sblock.y}`].classList.add('sneck-block');
+    });
+
+    blocks[`${sfood.x}-${sfood.y}`].classList.add('sfood-block');
+  };
+
+    sneckinterval = setInterval(() => {
+      let head = null;
+      if(direction == 'down'){
+        head = {x: sneck[0].x+1,y: sneck[0].y};
+      }
+      else if(direction == 'up'){
+        head = {x:sneck[0].x-1,y: sneck[0].y};
+      }
+      else if(direction == 'left'){
+        head = {x:sneck[0].x,y: sneck[0].y-1};
+      }
+      else if(direction == 'right'){
+        head = {x:sneck[0].x,y: sneck[0].y+1};
+      }
+      if (head.x < 0 || head.y < 0 || head.x >= Math.floor(board.getBoundingClientRect().height/blockheight) || head.y >= Math.floor(board.getBoundingClientRect().width/blockwidth) || sneck.some(sblock=>sblock.x == head.x && sblock.y == head.y)){
+        clearInterval(sneckinterval);
+        // alert("Game Over");
+        gmstrbutt.style.opacity = "1";
+        gmstrbutt.disabled = false;
+        gmstrbutt.style.cursor = 'pointer';
+        gmstrbutt.innerHTML = `<i class="ri-reset-left-fill"></i>`;
+        sneck.forEach(sblock=>{
+          blocks[`${sblock.x}-${sblock.y}`].classList.remove('sneck-block');
+        });
+        document.querySelector('#gm-str-head').innerText = 'Game Over';
+        document.querySelectorAll('#gm-str-head, #sneck-gm-control').forEach(ele=>ele.style.opacity = "1");
+        return;
+      }
+
+      if (head.x == sfood.x && head.y == sfood.y){
+        blocks[`${sfood.x}-${sfood.y}`].classList.remove('sfood-block');
+        sfood = {x:Math.floor(Math.random()*(board.getBoundingClientRect().height/blockheight)),y:Math.floor(Math.random()*(board.getBoundingClientRect().width/blockwidth))};
+        sneck.unshift(head);
+        snecks();
+        sneckScoreVal++;
+        document.querySelector('#sneck-score span').innerText = sneckScoreVal;
+        return;
+      }
+
+      sneck.forEach(sblock=>{
+        blocks[`${sblock.x}-${sblock.y}`].classList.remove('sneck-block');
+      });
+
+      sneck.unshift(head);
+      sneck.pop();
+      snecks();
+
+
+    }, 300);
+
+};
+
+gmstrbutt.addEventListener('click', function(){
+  document.querySelector('#sneck-score span').innerText = '0';
+  gmstrbutt.style.opacity = "0";
+  gmstrbutt.disabled = true;
+  gmstrbutt.style.cursor = 'default';
+  document.querySelectorAll('#gm-str-head, #sneck-gm-control').forEach(ele=>ele.style.opacity = "0");
+  strsneckgame();
+});
+
