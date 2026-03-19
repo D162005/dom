@@ -447,7 +447,7 @@ box13.addEventListener('mousemove',function(det){
     left:xVal,
     ease: 'power4',
   })
-  console.log(xVal);
+  // console.log(xVal);
 });
 
 
@@ -520,7 +520,7 @@ for(x=0 ; x<Math.floor(board.getBoundingClientRect().height/blockheight) ; x++){
   for(y=0 ; y<Math.floor(board.getBoundingClientRect().width/blockwidth) ; y++){
     let block = document.createElement('div');
     block.className = 'block';
-    block.innerText = `${x}-${y}`;
+    // block.innerText = `${x}-${y}`;
     board.appendChild(block);
     blocks[`${x}-${y}`] = block;
   };
@@ -616,4 +616,78 @@ gmstrbutt.addEventListener('click', function(){
   document.querySelectorAll('#gm-str-head, #sneck-gm-control').forEach(ele=>ele.style.opacity = "0");
   strsneckgame();
 });
+
+
+
+
+let topbox = document.querySelector('#top-box');
+let gmBoxColors = ['rgb(255,0,0)', 'rgb(0,255,0)', 'rgb(0,0,255)'];
+let redcolumn = document.querySelector('#red-box');
+let greencolumn = document.querySelector('#green-box');
+let bluecolumn = document.querySelector('#blue-box');
+// let boxes = [];
+
+for(i=0 ; i<10 ; i++){
+  let gmBox = document.createElement('div');
+  gmBox.className = 'gm-box';
+  gmBox.draggable = "true";
+  gmBox.style.backgroundColor = gmBoxColors[Math.floor(Math.random()*gmBoxColors.length)];
+  topbox.appendChild(gmBox);
+  // boxes.push(gmBox);
+}
+
+let gmBoxes = document.querySelectorAll('.gm-box');
+let draggedBox = null;
+
+gmBoxes.forEach((gmBox, idx)=>{
+  gmBox.id = `gm-box-${idx}`;
+  gmBox.addEventListener('dragstart', function(det){
+    draggedBox = gmBox;
+    det.dataTransfer.setData('text/plain', gmBox.id);
+    // boxes.push(draggedBox);  
+  });
+});
+
+function addDragonEvents(column){
+  column.addEventListener('dragenter', function(det){
+    det.preventDefault();
+    column.classList.add('drag-in');
+  });
+
+  column.addEventListener('dragleave', function(det){
+    det.preventDefault();
+    column.classList.remove('drag-in');
+  });
+
+  column.addEventListener('dragover', function(det){
+    det.preventDefault();
+  });
+
+  column.addEventListener('drop', function(det){
+    det.preventDefault();
+    let boxid = det.dataTransfer.getData('text/plain');
+    column.appendChild(draggedBox);
+    column.classList.remove('drag-in');
+    draggedBox.classList.add('in-lined');
+  });
+
+};
+
+// console.log(boxes.forEach(box=>window.getComputedStyle(box).backgroundColor));
+
+addDragonEvents(redcolumn);
+addDragonEvents(greencolumn);
+addDragonEvents(bluecolumn);
+
+
+
+
+
+
+
+
+
+  
+
+
 
